@@ -46,11 +46,6 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const FlutterLogo(
-                    size: 200,
-                    textColor: Colors.white,
-                    style:FlutterLogoStyle.horizontal,
-                  ),
                   ElevatedButton(
                     onPressed: () {},
                     child: Text('Iniciar Pesagem'),
