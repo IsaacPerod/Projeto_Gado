@@ -10,19 +10,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final controller = TextEditingController();
-
-  final list = <String>[];
+  final usuarioController = TextEditingController();
+  final senhaController = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Pesagem de Gado',
-        style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
-      ),
       body: Center(
         child: Stack(
           alignment: Alignment.center,
@@ -44,18 +38,104 @@ class _HomePageState extends State<HomePage> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const Text(
+                    'Bem-vindo',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 300, // Altere para a altura desejada
+                    width: 300, // Altere para a largura desejada
+                    child: Image.asset(
+                      'assets/logoC.png',
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
+                  const Text(
+                    'Login',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextField(
+                      controller: usuarioController,
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        hintText: 'Usuário',
+                        filled: true,
+                        fillColor: Color.fromARGB(255, 184, 183, 183),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TextField(
+                      controller: senhaController,
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        hintText: 'Senha',
+                        filled: true,
+                        fillColor: Color.fromARGB(255, 184, 183, 183),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text('Iniciar Pesagem'),
+                    child: Text('Entrar'),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Colors.blue,
+                      backgroundColor: const Color.fromARGB(255, 75, 75, 75),
+                    ),
                   ),
-                  )
-                ]
-              )
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          print('Criar um Usuário foi clicado');
+                          // Adicione a ação que você deseja executar aqui
+                        },
+                        child: const Text(
+                          'Criar um Usuário',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 196, 196, 196),
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 150),
+                      InkWell(
+                        onTap: () {
+                          print('Esqueci minha Senha foi clicado');
+                          // Adicione a ação que você deseja executar aqui
+                        },
+                        child: const Text(
+                          'Esqueci minha Senha',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 196, 196, 196),
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              
             )
           ]
         )
