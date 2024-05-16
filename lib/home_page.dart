@@ -46,10 +46,11 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                   SizedBox(
-                    height: 300, // Altere para a altura desejada
+                    height: 200, // Altere para a altura desejada
                     width: 300, // Altere para a largura desejada
                     child: Image.asset(
                       'assets/logoC.png',
@@ -117,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 150),
+                      const SizedBox(width: 50),
                       InkWell(
                         onTap: () {
                           print('Esqueci minha Senha foi clicado');
