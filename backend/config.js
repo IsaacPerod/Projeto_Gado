@@ -1,4 +1,4 @@
 module.exports = {
-  mongoURI: 'your_mongodb_connection_string',
+  mongoURI: 'mongodb://Isaac:123@localhost:27017/credenciais',
   secretOrKey: 'secret'
 };
