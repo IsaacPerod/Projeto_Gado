@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:app/register_page.dart';
 import 'package:app/input_design.dart';
+import 'package:app/background.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,24 +19,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Stack(
-            alignment: Alignment.center,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      body: Background(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  'assets/cow.jpg',
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Container(
-                color: Colors.black.withOpacity(0.5),
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-              ),
               SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
@@ -44,14 +34,6 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Bem-vindo',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold
-                      ),
-                    ),
                     SizedBox(
                       height: 200, // Altere para a altura desejada
                       width: 300, // Altere para a largura desejada
@@ -61,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const Text(
-                      'Login',
+                      'Olá, seja bem-vindo!',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
@@ -120,7 +102,6 @@ class _HomePageState extends State<HomePage> {
           )
           
         )
-      )
-    );
+      );
   }
 }
