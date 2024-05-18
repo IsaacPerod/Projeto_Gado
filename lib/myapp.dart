@@ -1,5 +1,5 @@
 import 'package:app/home_controller.dart';
-import 'package:app/home_page.dart';
+import 'package:app/initial_page.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomeController(
-        child: HomePage()
+        child: const InitialPage()
         ),
     );
   } 
