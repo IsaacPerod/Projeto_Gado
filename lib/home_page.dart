@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final usuarioController = TextEditingController();
+  final emailController = TextEditingController();
   final senhaController = TextEditingController();
   
   @override
@@ -21,87 +21,82 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        title: const Text('Login'),
+        titleTextStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 30,
+        ),
+        backgroundColor: const Color.fromARGB(255, 75, 75, 75).withOpacity(0.6),
       ),
       body: Background(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 200, // Altere para a altura desejada
-                      width: 300, // Altere para a largura desejada
-                      child: Image.asset(
-                        'assets/logoC.png',
-                        fit: BoxFit.scaleDown,
-                      ),
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            SizedBox(
+              height: 200, // Altere para a altura desejada
+              width: 300, // Altere para a largura desejada
+              child: Image.asset(
+                'assets/logoC.png',
+                fit: BoxFit.scaleDown,
+              ),
+            ),
+            const Text(
+              'Olá, seja bem-vindo!',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+              ),
+            ),
+            Input(emailController, 'E-mail'),
+            Input(senhaController, 'Senha'),
+
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Entrar'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: const Color.fromARGB(255, 75, 75, 75),
+              ),
+            ),
+            const SizedBox(width: 50),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    print('Criar um Usuário foi clicado');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                    );
+                  },
+                  child: const Text(
+                    'Criar um Usuário',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 196, 196, 196),
+                      fontSize: 15,
                     ),
-                    const Text(
-                      'Olá, seja bem-vindo!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                      ),
-                    ),
-                    InputDesign(usuarioController, 'E-mail'),
-                    InputDesign(senhaController, 'Senha'),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Entrar'),
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: const Color.fromARGB(255, 75, 75, 75),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            print('Criar um Usuário foi clicado');
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => RegisterPage()),
-                            );
-                          },
-                          child: const Text(
-                            'Criar um Usuário',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 196, 196, 196),
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 50),
-                        InkWell(
-                          onTap: () {
-                            print('Esqueci minha Senha foi clicado');
-                            // Adicione a ação que você deseja executar aqui
-                          },
-                          child: const Text(
-                            'Esqueci minha Senha',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 196, 196, 196),
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
-                
-              )
-            ]
-          )
-          
-        )
-      );
+                const SizedBox(width: 50),
+                InkWell(
+                  onTap: () {
+                    print('Esqueci minha Senha foi clicado');
+                    // Adicione a ação que você deseja executar aqui
+                  },
+                  child: const Text(
+                    'Esqueci minha Senha',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 196, 196, 196),
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),  
+      )
+    );
   }
 }

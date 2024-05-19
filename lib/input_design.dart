@@ -1,29 +1,68 @@
 import 'package:flutter/material.dart';
 
-class InputDesign extends StatelessWidget{
-  const InputDesign(this.controller, this.text, {super.key});
+class Input extends StatefulWidget {
+  final TextEditingController controller;
+  final String text;
 
-final TextEditingController controller;
-final String text;
+  const Input(this.controller, this.text, {Key? key}) : super(key: key);
 
-@override
-  Widget build (context){ 
+  @override
+  _InputState createState() => _InputState();
+}
+
+class _InputState extends State<Input> {
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      controller: controller,
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        labelText: text,
-                        labelStyle: const TextStyle(color: Colors.white),
-                        enabledBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+      padding: const EdgeInsets.all(16.0),
+      child: Form(
+        child: Column(
+          children: [
+            TextFormField(
+              controller: widget.controller,
+              obscureText: widget.text == 'Senha' ? _obscureText : false,
+              decoration: InputDecoration(
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  ),
+                ),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.deepOrange,
+                  ),
+                ),
+                label: Text(widget.text),
+                suffixIcon: widget.text == 'Senha'
+                    ? IconButton(
+                        onPressed: _togglePasswordVisibility,
+                        icon: Icon(
+                          _obscureText ? Icons.visibility : Icons.visibility_off,
                         ),
-                        focusedBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                        ),
+                      )
+                    : Icon(
+                        widget.text == 'E-mail'
+                            ? Icons.email
+                            : widget.text == 'Nome'
+                                ? Icons.person
+                                : null,
                       ),
-                    ),
-                  );
+                labelStyle: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

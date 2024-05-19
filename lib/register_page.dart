@@ -32,15 +32,16 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  InputDesign(usuarioController, 'Nome'),
-                  InputDesign(emailController, 'E-mail'),
-                  InputDesign(senhaController, 'Senha'),
+                  Input(usuarioController, 'Nome'),
+                  Input(emailController, 'E-mail'),
+                  Input(senhaController, 'Senha'),
                   
-                  SizedBox(height: 40,),
+                  const SizedBox(height: 40,),
 
                   ElevatedButton(
                     onPressed: () {
-                      // Adicione a lógica do botão aqui
+                      print('Usuário cadastrado com sucesso!');
+                      Navigator.pop(context);
                     },
                     child: const Text('Cadastrar'),
                     style: ElevatedButton.styleFrom(
