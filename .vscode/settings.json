@@ -1,3 +1,6 @@
 {
-  "cmake.configureOnOpen": true
+  "cmake.configureOnOpen": true,
+  "yaml.schemas": {
+    "https://json.schemastore.org/pubspec.json": []
+}
 }
