@@ -36,60 +36,62 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color.fromARGB(255, 75, 75, 75).withOpacity(0.6),
       ),
       body: Background(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              const SizedBox(height: 50),
-              SizedBox(
-                height: 100, // Altere para a altura desejada
-                width: 300, // Altere para a largura desejada
-                child: Image.asset(
-                  'assets/icon.png',
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
-              const SizedBox(height: 50),
-              const Text(
-                'Olá, seja bem-vindo!',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                ),
-              ),
-              Input(emailController, 'E-mail'),
-              Input(senhaController, 'Senha'),
-
-              ElevatedButton(
-                onPressed: () {
-                  botaoClicado();
-                },
-                child: Text('Entrar'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: const Color.fromARGB(255, 75, 75, 75),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  print('Criar um Usuário foi clicado');
-                    Navigator.push(
-                      context,
-                    MaterialPageRoute(builder: (context) => RegisterPage()),
-                    );
-                },
-                child: const Text(
-                  'Criar um novo Usuário',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 196, 196, 196),
-                    fontSize: 15,
+        child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  const SizedBox(height: 50),
+                  SizedBox(
+                    height: 100, // Altere para a altura desejada
+                    width: 300, // Altere para a largura desejada
+                    child: Image.asset(
+                      'assets/icon.png',
+                      fit: BoxFit.scaleDown,
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 50),
+                  const Text(
+                    'Olá, seja bem-vindo!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ),
+                  ),
+                  Input(emailController, 'E-mail'),
+                  Input(senhaController, 'Senha'),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      botaoClicado();
+                    },
+                    child: Text('Entrar'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: const Color.fromARGB(255, 75, 75, 75),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      print('Criar um Usuário foi clicado');
+                        Navigator.push(
+                          context,
+                        MaterialPageRoute(builder: (context) => RegisterPage()),
+                        );
+                    },
+                    child: const Text(
+                      'Criar um novo Usuário',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 196, 196, 196),
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),  
+            ), 
+          ), 
       )
     );
   }

@@ -35,41 +35,43 @@ class _RegisterPageState extends State<RegisterPage> {
         backgroundColor: const Color.fromARGB(255, 75, 75, 75).withOpacity(0.6),
       ),
       body: Background(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const SizedBox(height: 50),
-                    SizedBox(
-                      height: 100, // Altere para a altura desejada
-                      width: 300, // Altere para a largura desejada
-                      child: Image.asset(
-                        'assets/icon.png',
-                        fit: BoxFit.scaleDown,
-                      ),
-                    ),
-                    const SizedBox(height: 50),
-                    Input(usuarioController, 'Nome'),
-                    Input(emailController, 'E-mail'),
-                    Input(senhaController, 'Senha'),
-                    
-                    const SizedBox(height: 40,),
-
-                    ElevatedButton(
-                      onPressed: () {
-                        botaoClicado();
-                        //Navigator.pop(context);
-                      },
-                      child: const Text('Cadastrar'),
-                      style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: const Color.fromARGB(255, 75, 75, 75),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const SizedBox(height: 50),
+                      SizedBox(
+                        height: 100, // Altere para a altura desejada
+                        width: 300, // Altere para a largura desejada
+                        child: Image.asset(
+                          'assets/icon.png',
+                          fit: BoxFit.scaleDown,
                         ),
-                    ),
-                  ],
+                      ),
+                      const SizedBox(height: 50),
+                      Input(usuarioController, 'Nome'),
+                      Input(emailController, 'E-mail'),
+                      Input(senhaController, 'Senha'),
+                      
+                      const SizedBox(height: 40,),
+
+                      ElevatedButton(
+                        onPressed: () {
+                          botaoClicado();
+                          //Navigator.pop(context);
+                        },
+                        child: const Text('Cadastrar'),
+                        style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: const Color.fromARGB(255, 75, 75, 75),
+                          ),
+                      ),
+                    ],
+            ),
           ),
-        ),
+        )
       ),
     );
   }
