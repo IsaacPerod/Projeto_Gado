@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app/home_page.dart';
-import 'package:app/background.dart';
+import 'package:app/telas/login_page.dart';
+import 'package:app/common/background.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _InitialPageState extends State<InitialPage> {
                     height: 200, // Altere para a altura desejada
                     width: 300, // Altere para a largura desejada
                     child: Image.asset(
-                      'assets/logo_nome.png',
+                      'assets/logo_nome_Bk.png',
                       fit: BoxFit.scaleDown,
                     ),
                   ),
@@ -38,7 +38,7 @@ class _InitialPageState extends State<InitialPage> {
                     height: 200, // Altere para a altura desejada
                     width: 300, // Altere para a largura desejada
                     child: Image.asset(
-                      'assets/icon.png',
+                      'assets/iconBk.png',
                       fit: BoxFit.scaleDown,
                     ),
                   ),

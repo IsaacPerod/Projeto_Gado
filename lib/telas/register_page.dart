@@ -1,8 +1,8 @@
 import 'package:app/backend/authentication.dart';
 import 'package:app/common/snack_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:app/input_design.dart';
-import 'package:app/background.dart';
+import 'package:app/common/input_design.dart';
+import 'package:app/common/background.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         height: 100, // Altere para a altura desejada
                         width: 300, // Altere para a largura desejada
                         child: Image.asset(
-                          'assets/icon.png',
+                          'assets/icon_vaz_Bk.png',
                           fit: BoxFit.scaleDown,
                         ),
                       ),
@@ -62,11 +62,11 @@ class _RegisterPageState extends State<RegisterPage> {
                           botaoClicado();
                           //Navigator.pop(context);
                         },
-                        child: const Text('Cadastrar'),
                         style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
                             backgroundColor: const Color.fromARGB(255, 75, 75, 75),
                           ),
+                        child: const Text('Cadastrar'),
                       ),
                     ],
             ),

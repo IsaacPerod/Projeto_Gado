@@ -1,9 +1,9 @@
 import 'package:app/common/snack_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:app/register_page.dart';
-import 'package:app/input_design.dart';
-import 'package:app/background.dart';
-import 'package:app/principal_page.dart';
+import 'package:app/telas/register_page.dart';
+import 'package:app/common/input_design.dart';
+import 'package:app/common/background.dart';
+import 'package:app/telas/principal_page.dart';
 import 'package:app/backend/authentication.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                     height: 100, // Altere para a altura desejada
                     width: 300, // Altere para a largura desejada
                     child: Image.asset(
-                      'assets/icon.png',
+                      'assets/icon_vaz_Bk.png',
                       fit: BoxFit.scaleDown,
                     ),
                   ),
@@ -66,19 +66,24 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       botaoClicado();
                     },
-                    child: Text('Entrar'),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: const Color.fromARGB(255, 75, 75, 75),
                     ),
+                    child: const Text('Entrar'),
                   ),
                   TextButton(
                     onPressed: () {
                       print('Criar um Usuário foi clicado');
-                        Navigator.push(
-                          context,
-                        MaterialPageRoute(builder: (context) => RegisterPage()),
-                        );
+
+                      // Limpa os campos
+                      emailController.clear();
+                      senhaController.clear();
+
+                      Navigator.push(
+                        context,
+                      MaterialPageRoute(builder: (context) => const RegisterPage()),
+                      );
                     },
                     child: const Text(
                       'Criar um novo Usuário',
@@ -100,8 +105,8 @@ class _HomePageState extends State<HomePage> {
     String senha = senhaController.text;
 
     if (_formKey.currentState!.validate()){
-      print('Form Valido!');
-      print('E-mail: ${emailController.text}, Senha: ${senhaController.text}');
+      //print('Form Valido!');
+      //print('E-mail: ${emailController.text}, Senha: ${senhaController.text}');
       authentication.logarUsuario(
         email: email, 
         senha: senha
@@ -114,7 +119,7 @@ class _HomePageState extends State<HomePage> {
             context,
             MaterialPageRoute(builder: (context) => const PrincipalPage()),
           );
-        };
+        }
       });
     }
   }

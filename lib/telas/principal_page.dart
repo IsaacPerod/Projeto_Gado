@@ -1,7 +1,8 @@
 import 'package:app/services/api_service.dart';
 import 'package:app/services/storage_service.dart';
+import 'package:app/telas/dados_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app/background.dart';
+import 'package:app/common/background.dart';
 
 class PrincipalPage extends StatefulWidget {
   const PrincipalPage({Key? key}) : super(key: key);
@@ -39,6 +40,12 @@ class _PrincipalPageState extends State<PrincipalPage> {
       dados = apiDados;
     });
     storageService.saveDados(apiDados);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DataPage(dados: apiDados),
+      ),
+    );
   } catch (e) {
     // Print the exception to the console
     print(e);
@@ -59,7 +66,7 @@ class _PrincipalPageState extends State<PrincipalPage> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Dados de Pesagem'),
+        title: const Text('Sincronizar Dados'),
         titleTextStyle: const TextStyle(
           color: Colors.white,
           fontSize: 30,
@@ -71,25 +78,7 @@ class _PrincipalPageState extends State<PrincipalPage> {
           Background(
             child: isLoading
               ? const Center(child: CircularProgressIndicator())
-              : Container(
-                  margin: const EdgeInsets.all(10.0), // Adiciona margem ao Container
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10.0), // Adiciona bordas arredondadas ao Container
-                  ),
-                  child: Padding( // Adiciona margem ao ListView.builder
-                    padding: const EdgeInsets.all(10.0),
-                    child: ListView.builder(
-                      itemCount: dados.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text('ID: ${dados[index]['id']}'),
-                          subtitle: Text('Peso: ${dados[index]['peso']} kg'),
-                        );
-                      },
-                    ),
-                  ),
-              )
+              : Container(),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -97,7 +86,7 @@ class _PrincipalPageState extends State<PrincipalPage> {
               padding: EdgeInsets.only(bottom: 50.0), // Ajuste este valor para mover o botão para cima ou para baixo
               child: ElevatedButton(
                 onPressed: fetchDataFromApi,
-                child: const Text('Atualizar Dados'),
+                child: const Text('Sincronizar'),
                 style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                   backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 75, 75, 75).withOpacity(0.6)),
