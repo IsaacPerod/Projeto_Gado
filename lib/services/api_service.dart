@@ -14,7 +14,7 @@ class ApiService{
     baseUrl = 'http://$ipv4:5000';
   } */
 
-  void getIpWifi() async{
+  /* void getIpWifi() async{
 
     final info = NetworkInfo();
 
@@ -22,11 +22,21 @@ class ApiService{
     baseUrl = 'http://$ipv4:5000';
     print(baseUrl);
     
+  } */
+
+
+  void setBaseUrl(String ip) {
+
+    baseUrl = 'http://$ip:5000';
+    print(baseUrl);
+  }
+
+  String getBaseUrl() {
+    return baseUrl;
   }
 
 
   Future<List<Map<String, dynamic>>> getDados() async {
-    getIpWifi();
     final response = await http.get(Uri.parse('$baseUrl/dados'));
 
     if (response.statusCode == 200) {

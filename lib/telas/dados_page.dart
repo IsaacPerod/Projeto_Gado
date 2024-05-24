@@ -22,8 +22,11 @@ class DataPage extends StatelessWidget {
       body: Stack(
         children: [
           Background(
+            child: Container(),
+          ),
+          SafeArea(
             child: Container(
-              margin: const EdgeInsets.fromLTRB(10, 65, 10, 10), // Adiciona margem ao Container
+              margin: const EdgeInsets.fromLTRB(10, 10, 10, 10), // Adiciona margem ao Container
               alignment: Alignment.bottomCenter,
               decoration: BoxDecoration(
                 color: Colors.white,
