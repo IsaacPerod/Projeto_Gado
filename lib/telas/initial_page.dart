@@ -61,7 +61,9 @@ class _InitialPageState extends State<InitialPage> {
                               ElevatedButton(
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    apiService.setBaseUrl(ipController.text);
+                                    setState(() {
+                                      apiService.setBaseUrl(ipController.text);
+                                    });
                                     print(apiService.getBaseUrl());
                                     Navigator.push(
                                     context,

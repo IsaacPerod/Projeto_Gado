@@ -4,9 +4,15 @@ import 'package:get_ip_address/get_ip_address.dart';
 import 'package:http/http.dart' as http;
 import 'package:network_info_plus/network_info_plus.dart';
 
-class ApiService{
-  ApiService();
-  
+class ApiService {
+  static final ApiService _singleton = ApiService._internal();
+
+  factory ApiService() {
+    return _singleton;
+  }
+
+  ApiService._internal();
+
   String baseUrl = '';
 
   /* void getIp() async {

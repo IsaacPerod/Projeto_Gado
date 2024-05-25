@@ -81,18 +81,22 @@ class _PrincipalPageState extends State<PrincipalPage> {
           ),
           SafeArea(
             child: isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : Container(),
+                ? const Center(child: CircularProgressIndicator())
+                : Container(),
           ),
-          ElevatedButton(
-            onPressed: () {
-              fetchDataFromApi(); 
-            },
-            child: const Text('Sincronizar'),
-            style: ButtonStyle(
-              foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-              backgroundColor: WidgetStateProperty.all<Color>(const Color.fromARGB(255, 75, 75, 75).withOpacity(0.6)),
-            ),
+          Align(
+            alignment: Alignment.center,
+            child: ElevatedButton(
+                onPressed: () {
+                  print(apiService.getBaseUrl());
+                  fetchDataFromApi();
+                },
+                child: Text('Sincronizar'),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor:
+                      const Color.fromARGB(255, 75, 75, 75).withOpacity(0.6),
+                )),
           ),
         ],
       ),
