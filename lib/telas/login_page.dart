@@ -4,22 +4,24 @@ import 'package:app/telas/register_page.dart';
 import 'package:app/common/input_design.dart';
 import 'package:app/common/background.dart';
 import 'package:app/telas/principal_page.dart';
-import 'package:app/backend/authentication.dart';
+import 'package:app/services/authentication.dart';
+import 'package:app/services/storage_service.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _LoginPageState extends State<LoginPage> {
 
   final emailController = TextEditingController();
   final senhaController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   Authentication authentication = Authentication();
+  StorageService storageService = StorageService();
   
   @override
   Widget build(BuildContext context) {
@@ -115,6 +117,8 @@ class _HomePageState extends State<HomePage> {
           mostrarSnackBar(context: context, texto: erro);
         }
         else {
+          storageService.saveLoginState();
+          print('login salvo.');
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const PrincipalPage()),

@@ -1,8 +1,8 @@
-import 'package:app/common/input_design.dart';
+import 'package:app/telas/ip_page.dart';
+import 'package:app/telas/principal_page.dart';
 import 'package:flutter/material.dart';
-import 'package:app/telas/login_page.dart';
 import 'package:app/common/background.dart';
-import 'package:app/services/api_service.dart';
+import 'package:app/services/storage_service.dart';
 
 class InitialPage extends StatefulWidget {
   const InitialPage({Key? key}) : super(key: key);
@@ -13,14 +13,34 @@ class InitialPage extends StatefulWidget {
 
 class _InitialPageState extends State<InitialPage> {
 
-  final _formKey = GlobalKey<FormState>();
-  final ipController = TextEditingController();
-  final ApiService apiService = ApiService();
-  
+  final StorageService storageService = StorageService();
+
+  @override
+  void initState() {
+    super.initState();
+    checkLoginAndIp();
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const IpPage()), // Substitua NextPage pela página que você quer navegar
+      );
+    });
+  }
+
+  Future<void> checkLoginAndIp() async {
+    bool isLoggedIn = await storageService.getLoginState();
+    String ip = await storageService.getIp();
+
+    if (isLoggedIn && ip.isNotEmpty) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const PrincipalPage()), // Substitua MainPage pela página principal do seu aplicativo
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    
     return SafeArea(
       child:Scaffold(
         body: Background(
@@ -52,37 +72,7 @@ class _InitialPageState extends State<InitialPage> {
                         ),
                       ),
                       const SizedBox(height: 40),
-                      Form(
-                        key: _formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Input(ipController, 'Digite o endereço de IP do servidor'),
-                              ElevatedButton(
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    setState(() {
-                                      apiService.setBaseUrl(ipController.text);
-                                    });
-                                    print(apiService.getBaseUrl());
-                                    Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const HomePage(),
-                                    ),
-                                  );
-                                  }
-                                },
-                                child: Text('Começar'),
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: const Color.fromARGB(255, 75, 75, 75),
-                                ),
-                              ),
-                          ],
-                        ),
-                              
-                      ),
+                      
                     ],
                   ),
                   

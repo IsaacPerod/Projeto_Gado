@@ -2,6 +2,7 @@ import 'package:app/common/home_controller.dart';
 import 'package:app/telas/login_page.dart';
 import 'package:app/telas/initial_page.dart';
 import 'package:app/telas/principal_page.dart';
+import 'package:app/telas/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -38,7 +39,7 @@ class RoteadorTela extends StatelessWidget {
         if (snapshot.hasData) {
           return const PrincipalPage();
         } else {
-          return const HomePage();
+          return const LoginPage();
         }
       },
     );

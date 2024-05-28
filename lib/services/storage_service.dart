@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -28,4 +29,24 @@ class StorageService {
     final db = await database;
     return await db.query('dados');
   }
+
+  Future<void> saveLoginState() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isLoggedIn', true);
+  }
+
+  Future<bool> getLoginState() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('isLoggedIn') ?? false;
+  }
+
+  Future<void> saveIp(String ip) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setString('ip', ip);
+}
+
+Future<String> getIp() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString('ip') ?? '';
+}
 }

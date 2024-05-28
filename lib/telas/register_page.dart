@@ -1,4 +1,4 @@
-import 'package:app/backend/authentication.dart';
+import 'package:app/services/authentication.dart';
 import 'package:app/common/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:app/common/input_design.dart';

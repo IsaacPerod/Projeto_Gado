@@ -1,9 +1,11 @@
+import 'package:app/common/Navigation_Drawer.dart';
 import 'package:app/common/input_design.dart';
 import 'package:app/services/api_service.dart';
 import 'package:app/services/storage_service.dart';
 import 'package:app/telas/dados_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app/common/background.dart';
+import 'package:app/common/Navigation_Drawer.dart';
 
 class PrincipalPage extends StatefulWidget {
   const PrincipalPage({Key? key}) : super(key: key);
@@ -74,6 +76,7 @@ class _PrincipalPageState extends State<PrincipalPage> {
         ),
         backgroundColor: const Color.fromARGB(255, 75, 75, 75).withOpacity(0.6),
       ),
+      drawer: const DrawerNav(),
       body: Stack(
         children: [
           Background(

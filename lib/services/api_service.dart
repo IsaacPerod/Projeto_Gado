@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'package:dart_ipify/dart_ipify.dart';
-import 'package:get_ip_address/get_ip_address.dart';
 import 'package:http/http.dart' as http;
-import 'package:network_info_plus/network_info_plus.dart';
 
 class ApiService {
   static final ApiService _singleton = ApiService._internal();
@@ -14,22 +11,6 @@ class ApiService {
   ApiService._internal();
 
   String baseUrl = '';
-
-  /* void getIp() async {
-    final String ipv4 = await Ipify.ipv64();
-    baseUrl = 'http://$ipv4:5000';
-  } */
-
-  /* void getIpWifi() async{
-
-    final info = NetworkInfo();
-
-    final ipv4 = await info.getWifiIP();
-    baseUrl = 'http://$ipv4:5000';
-    print(baseUrl);
-    
-  } */
-
 
   void setBaseUrl(String ip) {
 
